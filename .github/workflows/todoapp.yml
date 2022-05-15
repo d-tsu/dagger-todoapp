@@ -1,0 +1,26 @@
+name: todoapp
+
+on:
+  push:
+    branches: [ main ]
+
+env:
+  APP_NAME: todoapp-dagger-wuropa
+  NETLIFY_TEAM: dagger
+
+jobs:
+  dagger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v2
+      
+      - name: deploy to netlify
+        uses: dagger/dagger-for-github@v3
+        with:
+          version: 0.2
+          cmds: |
+            project update
+            do deploy
+          env:
+            NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
