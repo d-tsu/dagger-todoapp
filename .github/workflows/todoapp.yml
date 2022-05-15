@@ -22,5 +22,5 @@ jobs:
           cmds: |
             project update
             do deploy
-          env:
-            NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+        env:
+          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
